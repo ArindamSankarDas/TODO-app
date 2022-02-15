@@ -21,7 +21,6 @@ main {
   position: absolute;
   top: 12%;
   left: 50%;
-  z-index: 10000;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
@@ -65,9 +64,15 @@ main {
   }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 454px) {
   .toDoContainer .app_header {
-    width: 96vw;
+    width: 94vw;
+  }
+}
+
+@media (max-width: 397px) {
+  .toDoContainer .app_header {
+    width: 95vw;
   }
 }
 
@@ -137,6 +142,7 @@ main {
   border-radius: 0.4rem;
   -webkit-box-shadow: 1px 10px 18px -2px #161722;
           box-shadow: 1px 10px 18px -2px #161722;
+  text-align: center;
 }
 
 .toDoContainer .todo_notes_container .notes_info {
@@ -164,6 +170,11 @@ main {
   font-size: 1.2rem;
   letter-spacing: 0.12rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.toDoContainer .todo_notes_container .notes_info span:hover {
+  color: #cacde8;
 }
 
 .toDoContainer .todo_notes_container .notes_info .notes_toggler {
@@ -183,14 +194,32 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 1rem;
 }
 
-.toDoContainer .todo_notes_container .notes_info .notes_toggler h3:first-child {
-  margin-right: 0.5rem;
+.toDoContainer .todo_notes_container .notes_info .notes_toggler h3 {
+  cursor: pointer;
 }
 
-.toDoContainer .todo_notes_container .notes_info .notes_toggler h3:last-child {
-  margin-left: 0.5rem;
+.toDoContainer .todo_notes_container .notes_info .notes_toggler h3:nth-child(2) {
+  margin: 0 0.6rem;
+}
+
+.toDoContainer .todo_notes_container .notes_info .notes_toggler h3:hover {
+  color: #cacde8;
+}
+
+@media (max-width: 397px) {
+  .toDoContainer .todo_notes_container .notes_info span {
+    font-size: 1rem;
+    letter-spacing: 0.12rem;
+    font-weight: 600;
+  }
+  .toDoContainer .todo_notes_container .notes_info .notes_toggler {
+    font-size: 1rem;
+    letter-spacing: 0.12rem;
+    font-weight: 600;
+  }
 }
 
 header {
