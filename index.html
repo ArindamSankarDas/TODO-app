@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- logo link -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <!-- styles link -->
+    <link rel="stylesheet" href="./scss/main.css " />
+
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <main>
+      <div class="toDoContainer">
+        <section class="app_header">
+          <h1>TODO</h1>
+          <img src="./images/icon-sun.svg" alt="sun" />
+        </section>
+
+        <section id="input_container">
+          <input type="text" name="todo_item" />
+          <button type="button">Add Item</button>
+        </section>
+
+        <section class="todo_notes_container">
+          <div class="notes"></div>
+          <div class="notes_info">
+            <span>5 items left</span>
+            <div class="notes_toggler">
+              <h3>All</h3>
+              <h3>Active</h3>
+              <h3>Completed</h3>
+            </div>
+            <span id="clear_notes">Clear Completed</span>
+          </div>
+        </section>
+      </div>
+      <header></header>
+      <footer></footer>
+    </main>
+  </body>
+</html>

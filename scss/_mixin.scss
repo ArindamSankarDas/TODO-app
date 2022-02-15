@@ -1,0 +1,17 @@
+@mixin display-flex($flex-direcion, $justify-content) {
+  display: flex;
+  flex-direction: $flex-direcion;
+  justify-content: $justify-content;
+  align-items: center;
+}
+
+@mixin remove-outline {
+  border: none;
+  outline-width: 0;
+}
+
+@mixin font-styles($font-size, $letter-spacing, $font-weight) {
+  font-size: $font-size;
+  letter-spacing: $letter-spacing;
+  font-weight: $font-weight;
+}
