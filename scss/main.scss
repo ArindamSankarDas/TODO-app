@@ -101,6 +101,61 @@ main {
     box-shadow: 1px 10px 18px -2px $very-dark-blue;
     text-align: center;
 
+    #notes_container {
+      width: 100%;
+      height: auto;
+      &:hover {
+        .note {
+          img {
+            opacity: 1;
+          }
+        }
+      }
+
+      .note {
+        @include font-styles(1.5rem, 0.1rem, 600);
+        position: relative;
+        width: 100%;
+        height: auto;
+        color: $light-grayish-blue;
+        border-bottom: 1px solid $light-grayish-blue;
+        text-align: left;
+
+        .check_box {
+          position: absolute;
+          top: 50%;
+          left: 2%;
+          transform: translateY(-70%);
+          width: 2.8rem;
+          height: 2.8rem;
+          border-radius: 50%;
+          border: 1px solid $dark-grayish-blue;
+
+          &:hover {
+            cursor: pointer;
+            border: 1px solid $bright-blue;
+          }
+        }
+
+        p {
+          margin: 1.5rem 5rem 1.5rem 6rem;
+        }
+
+        img {
+          opacity: 0;
+          position: absolute;
+          top: 50%;
+          right: 3%;
+          transform: translateY(-80%);
+          cursor: pointer;
+
+          @media (max-width: 900px) {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
     .notes_info {
       @include display-flex(row, space-between);
       color: $dark-grayish-blue;
