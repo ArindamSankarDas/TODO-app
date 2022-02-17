@@ -184,6 +184,10 @@ footer .todo_notes_container #notes_container .note {
   text-align: left;
 }
 
+footer .todo_notes_container #notes_container .note p {
+  word-wrap: break-word;
+}
+
 footer .todo_notes_container #notes_container .note .check_box {
   position: absolute;
   top: 50%;

@@ -138,6 +138,10 @@ footer {
         border-bottom: 1px solid $light-grayish-blue;
         text-align: left;
 
+        p {
+          word-wrap: break-word;
+        }
+
         .check_box {
           position: absolute;
           top: 50%;
