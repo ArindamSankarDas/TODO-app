@@ -19,39 +19,32 @@
     <title>Frontend Mentor | Todo app</title>
   </head>
   <body>
-    <main>
-      <div class="toDoContainer">
-        <section class="app_header">
-          <h1>TODO</h1>
-          <img src="./images/icon-sun.svg" alt="sun" />
-        </section>
+    <div class="toDoContainer">
+      <section class="app_header">
+        <h1>TODO</h1>
+        <img src="./images/icon-sun.svg" alt="sun" />
+      </section>
 
-        <section id="input_container">
-          <input type="text" name="todo_item" />
-          <button type="button">Add Item</button>
-        </section>
-
-        <section class="todo_notes_container">
-          <div id="notes_container">
-            <div class="note">
-              <div class="check_box"></div>
-              <p class="text">Jog around the park 3x </p>
-              <img src="./images/icon-cross.svg" alt="cross" />
-            </div>
+      <section class="input_container">
+        <input id="input_text" type="text" />
+        <button id="btn" type="button">Add Item</button>
+      </section>
+    </div>
+    <header></header>
+    <footer>
+      <section class="todo_notes_container">
+        <div id="notes_container"></div>
+        <div class="notes_info">
+          <span id="item_count">0 items</span>
+          <div class="notes_toggler">
+            <h3>All</h3>
+            <h3>Active</h3>
+            <h3>Completed</h3>
           </div>
-          <div class="notes_info">
-            <span>5 items left</span>
-            <div class="notes_toggler">
-              <h3>All</h3>
-              <h3>Active</h3>
-              <h3>Completed</h3>
-            </div>
-            <span id="clear_notes">Clear Completed</span>
-          </div>
-        </section>
-      </div>
-      <header></header>
-      <footer></footer>
-    </main>
+          <span id="clear_notes">Clear Completed</span>
+        </div>
+      </section>
+    </footer>
+    <script src="./js/script.js"></script>
   </body>
 </html>

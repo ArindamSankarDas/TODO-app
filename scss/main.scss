@@ -10,9 +10,10 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
-main {
+body {
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -57,7 +58,7 @@ main {
     }
   }
 
-  #input_container {
+  .input_container {
     margin: 2rem 0;
     position: relative;
 
@@ -81,7 +82,7 @@ main {
       right: 5%;
       transform: translateY(-50%);
       padding: 0.5rem 1rem;
-      color: $light-grayish-blue;
+      color: white;
       background-color: #b12fb1;
       border-radius: 0.4rem;
       cursor: pointer;
@@ -91,10 +92,26 @@ main {
       }
     }
   }
+}
+
+header {
+  width: 100%;
+  height: 40%;
+  background: url("../images/bg-desktop-dark.jpg") no-repeat;
+  background-size: cover;
+}
+
+footer {
+  width: 100%;
+  min-height: 60%;
+  background-color: $very-dark-desaturated-blue;
 
   .todo_notes_container {
     @include display-flex(column, center);
-    width: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35vw;
     height: auto;
     background-color: $very-dark-desaturated-blue;
     border-radius: 0.4rem;
@@ -131,6 +148,29 @@ main {
           border-radius: 50%;
           border: 1px solid $dark-grayish-blue;
 
+          &.completed {
+            background: url("../images/icon-check.svg") no-repeat center;
+            background-size: 1.5rem;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              background-image: $check-backgroud;
+              opacity: 0.65;
+            }
+
+            & ~ p {
+              text-decoration: line-through;
+              color: $dark-grayish-blue;
+            }
+          }
+
           &:hover {
             cursor: pointer;
             border: 1px solid $bright-blue;
@@ -147,6 +187,7 @@ main {
           top: 50%;
           right: 3%;
           transform: translateY(-80%);
+          z-index: 12;
           cursor: pointer;
 
           @media (max-width: 900px) {
@@ -203,18 +244,26 @@ main {
         }
       }
     }
+
+    @media (max-width: 1100px) {
+      width: 60vw;
+    }
+
+    @media (max-width: 680px) {
+      width: 80vw;
+      font-size: 2.2rem;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 1.8rem;
+    }
+
+    @media (max-width: 454px) {
+      width: 94vw;
+    }
+
+    @media (max-width: 397px) {
+      width: 95vw;
+    }
   }
-}
-
-header {
-  width: 100%;
-  height: 40%;
-  background: url("../images/bg-desktop-dark.jpg") no-repeat;
-  background-size: cover;
-}
-
-footer {
-  width: 100%;
-  height: 100%-40%;
-  background-color: $very-dark-desaturated-blue;
 }

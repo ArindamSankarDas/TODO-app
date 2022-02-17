@@ -9,9 +9,10 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
-main {
+body {
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -80,12 +81,12 @@ main {
   cursor: pointer;
 }
 
-.toDoContainer #input_container {
+.toDoContainer .input_container {
   margin: 2rem 0;
   position: relative;
 }
 
-.toDoContainer #input_container input[type="text"] {
+.toDoContainer .input_container input[type="text"] {
   border: none;
   outline-width: 0;
   font-size: 1.6rem;
@@ -100,7 +101,7 @@ main {
   font-size: 1.6rem;
 }
 
-.toDoContainer #input_container button {
+.toDoContainer .input_container button {
   border: none;
   outline-width: 0;
   font-size: 1.4rem;
@@ -112,17 +113,30 @@ main {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   padding: 0.5rem 1rem;
-  color: #cacde8;
+  color: white;
   background-color: #b12fb1;
   border-radius: 0.4rem;
   cursor: pointer;
 }
 
-.toDoContainer #input_container button:active {
+.toDoContainer .input_container button:active {
   background-color: #7e127e;
 }
 
-.toDoContainer .todo_notes_container {
+header {
+  width: 100%;
+  height: 40%;
+  background: url("../images/bg-desktop-dark.jpg") no-repeat;
+  background-size: cover;
+}
+
+footer {
+  width: 100%;
+  min-height: 60%;
+  background-color: #25273c;
+}
+
+footer .todo_notes_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,7 +150,11 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: auto;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 35vw;
   height: auto;
   background-color: #25273c;
   border-radius: 0.4rem;
@@ -145,16 +163,16 @@ main {
   text-align: center;
 }
 
-.toDoContainer .todo_notes_container #notes_container {
+footer .todo_notes_container #notes_container {
   width: 100%;
   height: auto;
 }
 
-.toDoContainer .todo_notes_container #notes_container:hover .note img {
+footer .todo_notes_container #notes_container:hover .note img {
   opacity: 1;
 }
 
-.toDoContainer .todo_notes_container #notes_container .note {
+footer .todo_notes_container #notes_container .note {
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
   font-weight: 600;
@@ -166,7 +184,7 @@ main {
   text-align: left;
 }
 
-.toDoContainer .todo_notes_container #notes_container .note .check_box {
+footer .todo_notes_container #notes_container .note .check_box {
   position: absolute;
   top: 50%;
   left: 2%;
@@ -178,32 +196,58 @@ main {
   border: 1px solid #777a92;
 }
 
-.toDoContainer .todo_notes_container #notes_container .note .check_box:hover {
+footer .todo_notes_container #notes_container .note .check_box.completed {
+  background: url("../images/icon-check.svg") no-repeat center;
+  background-size: 1.5rem;
+}
+
+footer .todo_notes_container #notes_container .note .check_box.completed::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(28%, #57ddff), color-stop(59%, #c058f3));
+  background-image: linear-gradient(0deg, #57ddff 28%, #c058f3 59%);
+  opacity: 0.65;
+}
+
+footer .todo_notes_container #notes_container .note .check_box.completed ~ p {
+  text-decoration: line-through;
+  color: #777a92;
+}
+
+footer .todo_notes_container #notes_container .note .check_box:hover {
   cursor: pointer;
   border: 1px solid #3a7bfd;
 }
 
-.toDoContainer .todo_notes_container #notes_container .note p {
+footer .todo_notes_container #notes_container .note p {
   margin: 1.5rem 5rem 1.5rem 6rem;
 }
 
-.toDoContainer .todo_notes_container #notes_container .note img {
+footer .todo_notes_container #notes_container .note img {
   opacity: 0;
   position: absolute;
   top: 50%;
   right: 3%;
   -webkit-transform: translateY(-80%);
           transform: translateY(-80%);
+  z-index: 12;
   cursor: pointer;
 }
 
 @media (max-width: 900px) {
-  .toDoContainer .todo_notes_container #notes_container .note img {
+  footer .todo_notes_container #notes_container .note img {
     opacity: 1;
   }
 }
 
-.toDoContainer .todo_notes_container .notes_info {
+footer .todo_notes_container .notes_info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,18 +268,18 @@ main {
   background-color: transparent;
 }
 
-.toDoContainer .todo_notes_container .notes_info span {
+footer .todo_notes_container .notes_info span {
   font-size: 1.2rem;
   letter-spacing: 0.12rem;
   font-weight: 600;
   cursor: pointer;
 }
 
-.toDoContainer .todo_notes_container .notes_info span:hover {
+footer .todo_notes_container .notes_info span:hover {
   color: #cacde8;
 }
 
-.toDoContainer .todo_notes_container .notes_info .notes_toggler {
+footer .todo_notes_container .notes_info .notes_toggler {
   font-size: 1.2rem;
   letter-spacing: 0.12rem;
   font-weight: 600;
@@ -255,41 +299,59 @@ main {
   margin: 0 1rem;
 }
 
-.toDoContainer .todo_notes_container .notes_info .notes_toggler h3 {
+footer .todo_notes_container .notes_info .notes_toggler h3 {
   cursor: pointer;
 }
 
-.toDoContainer .todo_notes_container .notes_info .notes_toggler h3:nth-child(2) {
+footer .todo_notes_container .notes_info .notes_toggler h3:nth-child(2) {
   margin: 0 0.6rem;
 }
 
-.toDoContainer .todo_notes_container .notes_info .notes_toggler h3:hover {
+footer .todo_notes_container .notes_info .notes_toggler h3:hover {
   color: #cacde8;
 }
 
 @media (max-width: 397px) {
-  .toDoContainer .todo_notes_container .notes_info span {
+  footer .todo_notes_container .notes_info span {
     font-size: 1rem;
     letter-spacing: 0.12rem;
     font-weight: 600;
   }
-  .toDoContainer .todo_notes_container .notes_info .notes_toggler {
+  footer .todo_notes_container .notes_info .notes_toggler {
     font-size: 1rem;
     letter-spacing: 0.12rem;
     font-weight: 600;
   }
 }
 
-header {
-  width: 100%;
-  height: 40%;
-  background: url("../images/bg-desktop-dark.jpg") no-repeat;
-  background-size: cover;
+@media (max-width: 1100px) {
+  footer .todo_notes_container {
+    width: 60vw;
+  }
 }
 
-footer {
-  width: 100%;
-  height: 60%;
-  background-color: #25273c;
+@media (max-width: 680px) {
+  footer .todo_notes_container {
+    width: 80vw;
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  footer .todo_notes_container {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 454px) {
+  footer .todo_notes_container {
+    width: 94vw;
+  }
+}
+
+@media (max-width: 397px) {
+  footer .todo_notes_container {
+    width: 95vw;
+  }
 }
 /*# sourceMappingURL=main.css.map */

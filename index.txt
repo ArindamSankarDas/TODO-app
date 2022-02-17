@@ -1,0 +1,5 @@
+<div class="note">
+  <div class="check_box"></div>
+  <p class="text">Jog around the park 3x </p>
+  <img src="./images/icon-cross.svg" alt="cross" />
+</div>
