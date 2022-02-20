@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@300&family=Josefin+Sans:wght@100&display=swap");
 
 // Primary Colors
-$bright-blue: #3a7bfd;
+$bright-blue: hsl(220, 98%, 61%);
 $check-backgroud: linear-gradient(0deg, #57ddff 28%, #c058f3 59%);
 
 // Neutral Colors
@@ -17,8 +17,8 @@ $very-dark-blue: hsl(235, 21%, 11%);
 $very-dark-desaturated-blue: hsl(235, 24%, 19%);
 $light-grayish-blue: hsl(234, 39%, 85%);
 $dark-grayish-blue: hsl(233, 11%, 52%);
-$very-dark-grayish-blue: #4d5066;
+$very-dark-grayish-blue: hsl(233, 14%, 35%);
 $very-dark-graish-blue2: hsl(237, 14%, 26%);
 
 // Font-family
-$josephin-Sans: "Fira Sans Condensed", sans-serif; ;
+$josephin-Sans: "Josefin Sans", sans-serif;

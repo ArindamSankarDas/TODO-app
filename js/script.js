@@ -58,6 +58,9 @@ const checkElementForToggle = (notes) => {
 };
 
 const clearAllCompletedNotes = (notes) => {
+  numberOfItems -= notes.length;
+  itemCount.innerText = `${numberOfItems} items left`;
+
   notes.forEach((elem) => {
     if (elem.classList.contains("completed")) {
       return elem.remove();
@@ -121,9 +124,7 @@ const addNote = (data) => {
 
   checkBox.addEventListener("click", checkBoxToggle);
   deleteButton.addEventListener("click", deleteNote);
-  clearCompleted.addEventListener("click", () => {
-    return clearAllCompletedNotes(notes);
-  });
+  clearCompleted.addEventListener("click", () => clearAllCompletedNotes(notes));
 };
 
 addButton.addEventListener("click", () => {
