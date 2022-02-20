@@ -58,7 +58,14 @@ const checkElementForToggle = (notes) => {
 };
 
 const clearAllCompletedNotes = (notes) => {
-  numberOfItems -= notes.length;
+  let newArr = [];
+  notes.forEach((elem) => {
+    if (elem.classList.contains("active")) {
+      newArr.push(elem);
+    }
+  });
+
+  numberOfItems = newArr.length;
   itemCount.innerText = `${numberOfItems} items left`;
 
   notes.forEach((elem) => {
@@ -74,12 +81,11 @@ const deleteNote = (event) => {
   numberOfItems -= 1;
   itemCount.innerText = `${numberOfItems} items left`;
 
-  const note_container = event.target.parentElement;
-  note_container.remove();
-
   if (numberOfItems === 0) {
-    return (setAll.style.color = "#777a92");
+    setAll.style.color = "#777a92";
   }
+  const note_container = event.target.parentElement;
+  return note_container.remove();
 };
 
 const checkBoxToggle = (event) => {
