@@ -1,3 +1,4 @@
+// Events before any note is present
 const addButton = document.getElementById("btn");
 const select = document.querySelectorAll(".select");
 const inputText = document.getElementById("input_text");
@@ -7,7 +8,10 @@ const setActive = document.getElementById("set_active");
 const setCompleted = document.getElementById("set_completed");
 const notesContainer = document.getElementById("notes_container");
 const clearCompleted = document.getElementById("clear_completed");
+const imgToggler = document.getElementById("img_btn");
+const theme = document.getElementById("theme");
 
+// variable created to keep track of the number of items
 let numberOfItems = 0;
 
 const showAll = (notes) => {
@@ -106,9 +110,11 @@ const checkBoxToggle = (event) => {
 };
 
 const addNote = (data) => {
+  // Keeping track of the number of notes added
   numberOfItems += 1;
   itemCount.innerText = `${numberOfItems} items left`;
 
+  // Insert html content after add item is clicked
   notesContainer.insertAdjacentHTML(
     "afterbegin",
     `<div class="note active">
@@ -118,21 +124,26 @@ const addNote = (data) => {
     </div>`
   );
 
+  //Setting the default color
   setAll.style.color = "#3a7bfd";
 
+  // Events after notes are added
   const notes = document.querySelectorAll(".note");
   const checkBox = document.getElementById("check_box");
   const deleteButton = document.getElementById("delete");
 
+  // to check if there are any child Nodes
   if (notesContainer.hasChildNodes()) {
     checkElementForToggle(notes);
   }
 
+  // Event actions available after creating a note
   checkBox.addEventListener("click", checkBoxToggle);
   deleteButton.addEventListener("click", deleteNote);
   clearCompleted.addEventListener("click", () => clearAllCompletedNotes(notes));
 };
 
+// click event action to add note
 addButton.addEventListener("click", () => {
   const inputTextVal = inputText.value;
 
@@ -144,18 +155,28 @@ addButton.addEventListener("click", () => {
   }
 });
 
+imgToggler.addEventListener("click", () => {
+  let img = imgToggler.src;
+  theme.classList.toggle("light_mode");
+
+  if (img.indexOf("icon-moon.svg") != -1) {
+    return (imgToggler.src = "../images/icon-sun.svg");
+  } else {
+    return (imgToggler.src = "../images/icon-moon.svg");
+  }
+});
+
+// click event actions to change color after a note is added
 setAll.addEventListener("click", () => {
   setAll.style.color = "#3a7bfd";
   setActive.style.color = "#777a92";
   setCompleted.style.color = "#777a92";
 });
-
 setActive.addEventListener("click", () => {
   setActive.style.color = "#3a7bfd";
   setAll.style.color = "#777a92";
   setCompleted.style.color = "#777a92";
 });
-
 setCompleted.addEventListener("click", () => {
   setCompleted.style.color = "#3a7bfd";
   setActive.style.color = "#777a92";
