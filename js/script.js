@@ -6,7 +6,7 @@ const itemCount = document.getElementById("item_count");
 const setAll = document.getElementById("set_all");
 const setActive = document.getElementById("set_active");
 const setCompleted = document.getElementById("set_completed");
-const notesContainer = document.getElementById("notes_container");
+const notesContainer = document.querySelector(".notes_container");
 const clearCompleted = document.getElementById("clear_completed");
 const imgToggler = document.getElementById("img_btn");
 const theme = document.getElementById("theme");
@@ -14,6 +14,7 @@ const theme = document.getElementById("theme");
 // variable created to keep track of the number of items
 let numberOfItems = 0;
 
+// To show all the notes including both active and completed
 const showAll = (notes) => {
   notes.forEach((elem) => {
     if (
@@ -25,6 +26,7 @@ const showAll = (notes) => {
   });
 };
 
+// To show only those notes which have not been checked off
 const filterActive = (notes) => {
   notes.forEach((elem) => {
     if (!elem.classList.contains("active")) {
@@ -35,6 +37,7 @@ const filterActive = (notes) => {
   });
 };
 
+// To show only those notes which have been checked off
 const filterCompleted = (notes) => {
   notes.forEach((elem) => {
     if (!elem.classList.contains("completed")) {
@@ -45,6 +48,7 @@ const filterCompleted = (notes) => {
   });
 };
 
+//Referencing for specific attributes to use while filtering note data
 const checkElementForToggle = (notes) => {
   select.forEach((elem) =>
     elem.addEventListener("click", (event) => {
@@ -61,6 +65,7 @@ const checkElementForToggle = (notes) => {
   );
 };
 
+// To remove all those notes which have been checked off and updates the count
 const clearAllCompletedNotes = (notes) => {
   let newArr = [];
   notes.forEach((elem) => {
@@ -81,6 +86,7 @@ const clearAllCompletedNotes = (notes) => {
   });
 };
 
+// Removes a single note and updates the count
 const deleteNote = (event) => {
   numberOfItems -= 1;
   itemCount.innerText = `${numberOfItems} items left`;
@@ -92,6 +98,7 @@ const deleteNote = (event) => {
   return note_container.remove();
 };
 
+// To keep a check on the toggling of the checkBox
 const checkBoxToggle = (event) => {
   let classListData = event.target.classList;
   let parentDat = event.target.parentElement.classList;
@@ -109,6 +116,28 @@ const checkBoxToggle = (event) => {
   }
 };
 
+// keeping a check on the elements
+const getDragAfterElement = (container, y) => {
+  const draggableElements = [
+    ...container.querySelectorAll(".draggable:not(.dragging)"),
+  ];
+
+  return draggableElements.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+
+      if (offset < 0 && offset > closest.offset) {
+        return { offset, element: child };
+      } else {
+        return closest;
+      }
+    },
+    { offset: Number.NEGATIVE_INFINITY_INFINITY }
+  ).element;
+};
+
+// Adding notes when the add button item is clicked
 const addNote = (data) => {
   // Keeping track of the number of notes added
   numberOfItems += 1;
@@ -117,7 +146,7 @@ const addNote = (data) => {
   // Insert html content after add item is clicked
   notesContainer.insertAdjacentHTML(
     "afterbegin",
-    `<div class="note active">
+    `<div class="note active draggable" draggable="true">
         <div class="check_box active" id="check_box"></div>
         <p class="text">${data}</p>
         <img id="delete" src="./images/icon-cross.svg" alt="cross"  />
@@ -131,16 +160,40 @@ const addNote = (data) => {
   const notes = document.querySelectorAll(".note");
   const checkBox = document.getElementById("check_box");
   const deleteButton = document.getElementById("delete");
+  const draggables = document.querySelectorAll(".draggable");
 
   // to check if there are any child Nodes
   if (notesContainer.hasChildNodes()) {
     checkElementForToggle(notes);
   }
 
-  // Event actions available after creating a note
+  // Event actions available after creating and deleting a note
   checkBox.addEventListener("click", checkBoxToggle);
   deleteButton.addEventListener("click", deleteNote);
   clearCompleted.addEventListener("click", () => clearAllCompletedNotes(notes));
+
+  draggables.forEach((draggable) => {
+    draggable.addEventListener("dragstart", () => {
+      draggable.classList.add("dragging");
+    });
+
+    draggable.addEventListener("dragend", () => {
+      draggable.classList.remove("dragging");
+    });
+  });
+
+  notesContainer.addEventListener("dragover", (event) => {
+    event.preventDefault();
+
+    const afterElement = getDragAfterElement(notesContainer, event.clientY);
+    const draggable = document.querySelector(".dragging");
+
+    if (afterElement == null) {
+      notesContainer.appendChild(draggable);
+    } else {
+      notesContainer.insertBefore(draggable);
+    }
+  });
 };
 
 // click event action to add note
@@ -155,6 +208,7 @@ addButton.addEventListener("click", () => {
   }
 });
 
+// Event action to toggle the dark and light theme image
 imgToggler.addEventListener("click", () => {
   let img = imgToggler.src;
   theme.classList.toggle("light_mode");

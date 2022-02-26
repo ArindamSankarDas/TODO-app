@@ -26,14 +26,19 @@
       </section>
 
       <section class="input_container">
-        <input id="input_text" type="text" placeholder="Create a new Todo" />
+        <input
+          id="input_text"
+          type="text"
+          placeholder="Create a new Todo"
+          autocomplete="off"
+        />
         <button id="btn" type="button">Add Item</button>
       </section>
     </div>
     <header></header>
     <footer>
-      <section class="todo_notes_container">
-        <div id="notes_container"></div>
+      <section class="todo_notes_container container">
+        <div class="notes_container"></div>
         <div class="notes_info">
           <span id="item_count">0 items</span>
           <div class="notes_toggler">

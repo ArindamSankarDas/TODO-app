@@ -52,7 +52,7 @@ body {
       background-color: $very-light-gray;
       box-shadow: 1px 10px 18px -2px $light-grayish-blue;
 
-      #notes_container {
+      .notes_container {
         .note {
           color: $very-dark-graish-blue;
           border-bottom: 1px solid $dark-grayish-blue;
@@ -205,7 +205,7 @@ footer {
     box-shadow: 1px 10px 18px -2px $very-dark-blue;
     text-align: center;
 
-    #notes_container {
+    .notes_container {
       width: 100%;
       height: auto;
       &:hover {
@@ -213,6 +213,12 @@ footer {
           img {
             opacity: 1;
           }
+        }
+      }
+
+      .draggable {
+        &.dragging {
+          opacity: 0.9;
         }
       }
 
